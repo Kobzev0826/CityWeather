@@ -6,18 +6,12 @@
 
 # useful for handling different item types with a single interface
 from itemadapter import ItemAdapter
-
-import mysql.connector as sql
+from cityWeather.mysql_config import get_connector
 
 class CityweatherPipeline:
 
     def __init__(self):
-        self.con = sql.connect(
-            host = 'localhost',
-            user = 'user',
-            password = '123456',
-            database = 'city_weather'
-        )
+        self.con = get_connector()
         self.cur = self.con.cursor()
         self.cur.execute("""
             CREATE TABLE IF NOT EXISTS cityWeather(

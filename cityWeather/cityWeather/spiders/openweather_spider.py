@@ -1,18 +1,13 @@
 import mysql.connector as sql
 import scrapy
 from cityWeather.items import CityweatherItem
-
+from cityWeather.mysql_config import get_connector
 
 class OpenWeather(scrapy.Spider):
     name = 'openweather_spider'
 
     def get_cities_id(self):
-        self.con = sql.connect(
-            host='localhost',
-            user='user',
-            password='123456',
-            database='city_weather'
-        )
+        self.con = get_connector()
         self.cur = self.con.cursor(buffered=True)
         self.cur.execute("""
             select city_id from cities
