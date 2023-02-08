@@ -7,7 +7,7 @@ def start_scrapy():
 
 if __name__ == '__main__':
     load_dotenv()
-    subprocess.call(['scrapy', 'crawl', 'openweather_spider'])
-    # schedule.every(1).minutes.do(start_scrapy)
-    # while True:
-    #     schedule.run_pending()
+    # subprocess.call(['scrapy', 'crawl', 'openweather_spider'])
+    schedule.every(1).minutes.do(start_scrapy)
+    while True:
+        schedule.run_pending()
