@@ -1,0 +1,4 @@
+schedule==1.1.0
+pydotenv==0.0.7
+Scrapy==2.8.0
+mysql-connector-python==8.0.32
