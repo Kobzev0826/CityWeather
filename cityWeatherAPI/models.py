@@ -10,7 +10,7 @@ class City(Base):
     }
 
     city_id = Column(Integer, primary_key=True, index=True)
-    name_city = Column(String)
+    name_city = Column(String(length=256))
 
     def __init__(self, city_id, name_city):
         self.city_id = city_id
