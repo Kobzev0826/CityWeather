@@ -27,5 +27,5 @@ services:
       - ./mysql-dump:/docker-entrypoint-initdb.d
 
   API:
-    build: cityWeather_api
+    build: ./cityWeather_api
     restart: always
