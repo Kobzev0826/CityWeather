@@ -29,3 +29,5 @@ services:
   API:
     build: ./cityWeather_api
     restart: always
+    ports:
+      - '3002:3002'
