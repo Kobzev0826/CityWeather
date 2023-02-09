@@ -1,3 +1,5 @@
+import os
+
 from fastapi import HTTPException
 from sqlalchemy import create_engine
 from sqlalchemy import func, and_
@@ -6,7 +8,15 @@ from sqlalchemy.orm import sessionmaker
 from models import City, CityWeather, Base
 from openweathermap import get_city_id
 
-url = "mysql+mysqlconnector://user:123456@localhost:3306/cityWeather"
+
+def get_db_url():
+    db_name = os.environ['MYSQL_DATABASE']
+    db_user = os.environ['MYSQL_USER']
+    db_password = os.environ['MYSQL_PASSWORD']
+    return f"mysql+mysqlconnector://{db_user}:{db_password}@db:3306/{db_name}"
+
+
+url = get_db_url()
 
 engine = create_engine(url)
 

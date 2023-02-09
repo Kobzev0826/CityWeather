@@ -1,15 +1,5 @@
 version: '1.0'
 services:
-  scraper:
-    build: ./cityWeather
-    restart: always
-    environment:
-      DB.HOST: 'localhost'
-      DB.USER: 'user'
-      DB.PASSWORD: '123456'
-      DB.NAME: 'cityWeather'
-    ports:
-      - '3000:3000'
 
   db:
     image: mysql:8.0
@@ -19,15 +9,18 @@ services:
       MYSQL_USER: 'user'
       MYSQL_PASSWORD: '123456'
       MYSQL_ROOT_PASSWORD: '123456'
-    ports:
-      - '127.0.0.1:3306:3306'
-    expose:
-      - '3306'
     volumes:
       - ./mysql-dump:/docker-entrypoint-initdb.d
 
-  API:
+  api:
     build: ./cityWeather_api
     restart: always
-    ports:
-      - '3002:3002'
+
+  scraper:
+    build: ./cityWeather
+    restart: always
+    environment:
+      DB.HOST: 'db'
+      DB.USER: 'user'
+      DB.PASSWORD: '123456'
+      DB.NAME: 'cityWeather'
