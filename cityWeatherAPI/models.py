@@ -1,6 +1,7 @@
 from sqlalchemy import Column, String, Integer, DECIMAL, DATETIME
+from sqlalchemy.orm import declarative_base
 
-from base import Base
+Base = declarative_base()
 
 
 class City(Base):
