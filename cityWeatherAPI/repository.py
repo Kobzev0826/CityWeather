@@ -6,7 +6,7 @@ from sqlalchemy.orm import sessionmaker
 from models import City, CityWeather, Base
 from openweathermap import get_city_id
 
-url = "mysql+mysqlconnector://root:123456@localhost:3306/city_weather"
+url = "mysql+mysqlconnector://user:123456@localhost:3306/cityWeather"
 
 engine = create_engine(url)
 
