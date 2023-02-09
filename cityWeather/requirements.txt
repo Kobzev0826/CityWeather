@@ -1,4 +1,4 @@
 schedule==1.1.0
-pydotenv==0.0.7
+python-dotenv==0.21.1
 Scrapy==2.8.0
 mysql-connector-python==8.0.32
