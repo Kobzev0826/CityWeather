@@ -20,7 +20,7 @@ services:
       MYSQL_PASSWORD: '123456'
       MYSQL_ROOT_PASSWORD: '123456'
     ports:
-      - 127.0.0.1:3306:3306
+      - '127.0.0.1:3306:3306'
     expose:
       - '3306'
     volumes:
