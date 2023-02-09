@@ -29,11 +29,11 @@ class CityWeather(Base):
     temperature = Column(DECIMAL(4, 2))
     wind_speed = Column(DECIMAL(8, 2))
     atmosphere_pressure = Column(Integer)
-    date = Column(DATETIME)
+    dttm = Column(DATETIME)
 
     def __init__(self, city_id, temperature, wind_speed, atmosphere_pressure, date):
         self.city_id = city_id
         self.temperature = temperature
         self.wind_speed = wind_speed
         self.atmosphere_pressure = atmosphere_pressure
-        self.date = date
+        self.dttm = date

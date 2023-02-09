@@ -23,14 +23,14 @@ def get_city_stat(city, start_date, end_date):
         CityWeather.temperature,
         CityWeather.wind_speed,
         CityWeather.atmosphere_pressure,
-        CityWeather.date,
+        CityWeather.dttm,
     ).join(City,
            CityWeather.city_id == City.city_id). \
         filter(
         City.name_city.like(f"{city}%"),
         and_(
-            CityWeather.date > start_date,
-            CityWeather.date < end_date
+            CityWeather.dttm > start_date,
+            CityWeather.dttm < end_date
         )
     ). \
         all()
@@ -47,8 +47,8 @@ def get_avg_city_stat(city, start_date, end_date):
         filter(
         City.name_city.like(f"{city}%"),
         and_(
-            CityWeather.date > start_date,
-            CityWeather.date < end_date
+            CityWeather.dttm > start_date,
+            CityWeather.dttm < end_date
         )
     ). \
         group_by(
@@ -61,9 +61,9 @@ def get_last_weather(search):
     db = session()
     weather = db.query(
         City.name_city,
-        func.row_number().over(partition_by=CityWeather.city_id, order_by=CityWeather.date).label('row_number'),
+        func.row_number().over(partition_by=CityWeather.city_id, order_by=CityWeather.dttm).label('row_number'),
         CityWeather.temperature,
-        CityWeather.date
+        CityWeather.dttm
     ).join(City,
            CityWeather.city_id == City.city_id
            ). \
