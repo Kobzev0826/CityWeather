@@ -7,7 +7,7 @@ Base = declarative_base()
 class City(Base):
     __tablename__ = "cities"
     __table_args__ = {
-        'schema': "city_weather"
+        'schema': "cityWeather"
     }
 
     city_id = Column(Integer, primary_key=True, index=True)
