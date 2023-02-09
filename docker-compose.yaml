@@ -8,6 +8,8 @@ services:
       DB.USER: 'user'
       DB.PASSWORD: '123456'
       DB.NAME: 'cityWeather'
+    ports:
+      - '3000:3000'
 
   db:
     image: mysql:8.0
