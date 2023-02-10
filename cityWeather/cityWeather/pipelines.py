@@ -8,32 +8,25 @@
 from itemadapter import ItemAdapter
 from cityWeather.mysql_config import get_connector
 
+
 class CityweatherPipeline:
 
     def __init__(self):
         self.con = get_connector()
         self.cur = self.con.cursor()
-        self.cur.execute("""
-            CREATE TABLE IF NOT EXISTS cityWeather(
-                id int not NULL auto_increment,
-                city_id int,
-                temperature decimal(4,2),
-                wind_speed decimal(6,2),
-                atmosphere_pressure int,
-                date datetime,
-                PRIMARY KEY (id)
-                )
-        """)
 
     def process_item(self, item, spider):
         ## Define insert statement
         print(f"city_id={item['city_id']}")
-        items = ( item["city_id"], item["temperature"], item["wind_speed"],item["atmosphere_pressure"])
-        print("items: " , items)
-        self.cur.execute(""" insert into cityWeather (city_id, temperature, wind_speed,atmosphere_pressure, date ) values (%s,%s,%s,%s,now())""", items)
+        items = (item["city_id"], item["temperature"], item["wind_speed"], item["atmosphere_pressure"])
 
+        self.cur.execute(
+            f""" insert into cityWeather (city_id, temperature, wind_speed, atmosphere_pressure, dttm ) 
+            values ({items[0]},{items[1]},{items[2]},{items[3]},now())""")
+        print("items1: ", items)
         ## Execute insert of data into database
         self.con.commit()
+        print("items2: ", items)
 
     def close_spider(self, spider):
         ## Close cursor & connection to database

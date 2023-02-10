@@ -2,6 +2,7 @@ from datetime import datetime
 
 from fastapi import FastAPI, Path, Query
 from fastapi.encoders import jsonable_encoder
+from fastapi.responses import JSONResponse
 
 import repository
 from ResponseModels import CityStat, AVGStat, CityWeatherResponse

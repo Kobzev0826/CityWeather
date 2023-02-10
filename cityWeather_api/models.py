@@ -19,9 +19,9 @@ class City(Base):
 
 
 class CityWeather(Base):
-    __tablename__ = "cityweather"
+    __tablename__ = "cityWeather"
     __table_args__ = {
-        'schema': "city_weather"
+        'schema': "cityWeather"
     }
 
     id = Column(Integer, primary_key=True, index=True)

@@ -1,5 +1,5 @@
 from datetime import datetime
-
+from typing import  Optional
 from pydantic import BaseModel, Field
 
 
@@ -23,9 +23,9 @@ class AVGStat(BaseModel):
 
 
 class CityWeatherResponse(BaseModel):
-    name_city: str = Field(..., alias="name_city")
-    temperature: float = Field(..., alias="temperature")
-    date: datetime = Field(..., alias="date")
+    name_city: Optional[str] = Field(None, alias="name_city")
+    temperature: Optional[float] = Field(None, alias="temperature")
+    dttm: Optional[datetime] = Field(None, alias="dttm")
 
     class Config:
         orm_mode = True

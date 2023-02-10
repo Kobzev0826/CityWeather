@@ -34,8 +34,7 @@ def get_city_stat(city, start_date, end_date):
         CityWeather.wind_speed,
         CityWeather.atmosphere_pressure,
         CityWeather.dttm,
-    ).join(City,
-           CityWeather.city_id == City.city_id). \
+    ).join(City, CityWeather.city_id == City.city_id). \
         filter(
         City.name_city.like(f"{city}%"),
         and_(
